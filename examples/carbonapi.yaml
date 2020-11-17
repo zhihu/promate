@@ -1,0 +1,23 @@
+listen: ":8081"
+cache:
+  type: "mem"
+  size_mb: 1024
+concurency: 1024
+alwaysSendGlobsAsIs: true
+notFoundStatusCode: 200
+upstreams:
+  tldCacheDisabled: true
+  timeouts:
+    find: "30s"
+    render: "60s"
+    connect: "1s"
+  backendsv2:
+    backends:
+      - groupName: "matecarbon"
+        protocol: "carbonapi_v3_pb"
+        lbMethod: "rr"
+        servers:
+          - "http://127.0.0.1:2005"
+expvar:
+  enabled: true
+  pprofEnabled: true
