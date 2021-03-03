@@ -5,12 +5,12 @@ prometheus_max_body: 134217728
 rollups:
   - match_suffix: \.count
     rollup_func: sum_over_time
-  - match_suffix:  \.max
+  - match_suffix: \.max
     rollup_func: max_over_time
-  - match_suffix:  \.min
+  - match_suffix: \.min
     rollup_func: min_over_time
   - match_suffix: \.http\w+
     rollup_func: sum_over_time
-  - match_suffix: \.status_code\.\w+
+  - match_suffix: \.status_code\.[^.]+
     rollup_func: sum_over_time
 default_rollup_func: avg_over_time
